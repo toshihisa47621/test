@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>WEBアプリ</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+    </head>
+    <body>
+        <h1>文字変換</h1>
+        <h2>このページではアラビア数字と漢数字の変換ができます</h2>
+            {% if numbers == [] %}
+                <p>以下のサービスを選んでください</p>
+            {% else %}
+                <table border="1">
+                    <tr>
+                        <th>変換したい数</th>
+                        <th>変換後の数</th>
+                    </tr>
+                    {% for number in numbers %}
+                        <tr>
+                            <td>{{number.before}}</td>
+                            <td>{{number.after}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        <a href="{{ url_for('number2kanji')}}">アラビア数字</a>
+    </body>
+</html>
